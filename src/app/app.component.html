@@ -1,0 +1,41 @@
+<div class="container">
+<br/>
+<h2 class="text-center text-info">{{title}}</h2>  
+ <br/> 
+  <div class="row">   
+    
+    <div class="col-md-12">
+      <input type="number" placeholder="Search Product By Price" class="form-control" [(ngModel)]="searchProduct"/>
+    </div>
+  
+  </div>
+  <br/>
+  <table class="table">
+    <thead>
+      <tr>
+         <td> <b> Image </b></td>
+         <td> <b> Name </b> </td>
+         <td> <b> Quantity </b> </td>
+         <td> <b> Price </b> </td>
+    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | filterProductPipe : searchProduct" >
+         
+        <td >           
+          <img    [src]='product.FrontImage'
+                  [width]='imageWidth'
+                  [height]='imageHeight'
+                  (mouseover)="flipImage($event,product.BackImage)"
+                  (mouseout)="flipImage($event,product.FrontImage)" />        
+
+       </td>
+        <td> {{product.Name}} </td>
+        <td> {{product.Quantity}} </td>
+        <td> {{product.Price}} </td>
+       
+    </tr>
+    </tbody>
+  </table>
+</div>
